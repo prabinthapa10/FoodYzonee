@@ -51,16 +51,16 @@ export default function FoodApp() {
   };
 
   return (
-    <MainContainer>
+    <>
       <TopContainer>
-        <div>
+        <Container>
           <img src="/logo.svg" alt="" />
           <input
             onChange={searchedData}
             type="text"
             placeholder="Search food..."
           />
-        </div>
+        </Container>
         <FilterContainer>
           <Button onClick={() => handleClick("all")}>All</Button>
           <Button onClick={() => handleClick("breakfast")}>BreakFast</Button>
@@ -69,10 +69,42 @@ export default function FoodApp() {
         </FilterContainer>
       </TopContainer>
       <SearchedFood data={filteredData} url={URL} />
-    </MainContainer>
+    </>
   );
 }
-const MainContainer = styled.div``;
-const TopContainer = styled.div``;
-const FilterContainer = styled.div``;
-const Button = styled.button``;
+
+const TopContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #323234;
+  height: 140px;
+  gap: 30px;
+  padding-top: 50px;
+`;
+const Container = styled.div`
+  width: 1500px;
+  display: flex;
+  justify-content: space-around;
+  input {
+    outline: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+`;
+
+const FilterContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+`;
+const Button = styled.button`
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #945959;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background: #585050;
+  }
+`;

@@ -4,7 +4,8 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyled = createGlobalStyle`
   *{
-    background-color: #323234;
+
+    /* background-color: #323234; */
     color: white
   }
 `;
