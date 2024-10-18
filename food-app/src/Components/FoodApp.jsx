@@ -7,7 +7,7 @@ URL = "http://localhost:9000";
 export default function FoodApp() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [selectedType, setSelectedType] = useState([]);
+  const [selectedType, setSelectedType] = useState("");
 
   //   effect for the page
   useEffect(() => {
@@ -15,6 +15,7 @@ export default function FoodApp() {
       const response = await fetch(URL);
       const json = await response.json();
       setData(json);
+      setFilteredData(json);
     };
     fetchData();
   }, []);
@@ -35,7 +36,19 @@ export default function FoodApp() {
 
   //   button on clicked process
 
-  const filterType = (type) => {};
+  const handleClick = (type) => {
+    if (type === "all") {
+      setFilteredData(data);
+      setSelectedType("all");
+      return;
+    }
+
+    const filterType = data.filter((food) =>
+      food.type.toLowerCase().includes(type.toLowerCase())
+    );
+    setFilteredData(filterType);
+    setSelectedType(type);
+  };
 
   return (
     <MainContainer>
